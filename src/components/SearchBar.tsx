@@ -1,6 +1,6 @@
 import { InputAdornment, OutlinedInput } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { playlistActions } from '../store';
 import { useDispatch } from 'react-redux';
 import { searchSongs } from '../global/constants';
@@ -14,12 +14,15 @@ type Props = {
 const SearchBar = ({ placeholder, children }: Props) => {
   const [search, setSearch] = useState<string>('');
   const dispatch = useDispatch();
-  const { data } = useSearchTracksQuery(search);
+  const { data } = useSearchTracksQuery(search, {
+    skip: search === ''
+  });
 
   return (
     <form
       className="flex justify-center min-w-[50%]"
       onSubmit={(e) => {
+        console.log("hello")
         e.preventDefault();
         dispatch(
           playlistActions.setSearchResults(
@@ -40,6 +43,7 @@ const SearchBar = ({ placeholder, children }: Props) => {
       }}
     >
       <OutlinedInput
+      onKeyDown={(e) => {if (e.key === "Enter") {e.target.form.requestSubmit();}}}
         value={search}
         sx={{
           borderRadius: 10,
@@ -58,7 +62,7 @@ const SearchBar = ({ placeholder, children }: Props) => {
           setSearch(e.target.value)
         }
       />
-    {children}
+      {children}
     </form>
   );
 };
