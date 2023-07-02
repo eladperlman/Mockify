@@ -1,0 +1,82 @@
+.song-modal {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(16, 33, 39, 1) 51%,
+    rgba(22, 22, 22, 1) 100%
+  );
+}
+.song-modal:before {
+  content: '';
+  background: linear-gradient(
+    90deg,
+    #1ddde8,
+    #0099ff,
+    #0091ff,
+    #2b1de8,
+    #0091ff,
+    #0099ff,
+    #1ddde8
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 200%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(50% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.song-modal:after {
+  content: '';
+  background: linear-gradient(
+    90deg,
+    #1ddde8,
+    #0099ff,
+    #0091ff,
+    #2b1de8,
+    #0091ff,
+    #0099ff,
+    #1ddde8
+  );
+  position: absolute;
+  top: calc(50% - 2px);
+  left: -2px;
+  background-size: 200%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(50% + 4px);
+  animation: glowing-reverse 20s linear infinite;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 400% 0;
+  }
+}
+
+@keyframes glowing-reverse {
+  0% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
