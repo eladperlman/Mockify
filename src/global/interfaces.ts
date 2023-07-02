@@ -1,4 +1,3 @@
-import { Dayjs } from 'dayjs';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { SvgIconTypeMap } from '@mui/material';
